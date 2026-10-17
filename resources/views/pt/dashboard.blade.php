@@ -79,9 +79,7 @@
                                 Kendaraan
                             </p>
 
-                            <h2 class="fw-bold mb-0">
-                                0
-                            </h2>
+                            <h2 class="fw-bold mb-0">{{ $jumlahKendaraan }}</h2>
 
                             <small class="text-muted">
                                 kendaraan terdaftar
@@ -117,9 +115,7 @@
                                 Driver
                             </p>
 
-                            <h2 class="fw-bold mb-0">
-                                0
-                            </h2>
+                            <h2 class="fw-bold mb-0">{{ $jumlahDriver }}</h2>
 
                             <small class="text-muted">
                                 driver terdaftar
@@ -155,9 +151,7 @@
                                 Perjalanan
                             </p>
 
-                            <h2 class="fw-bold mb-0">
-                                0
-                            </h2>
+                            <h2 class="fw-bold mb-0">{{ $jumlahPerjalanan }}</h2>
 
                             <small class="text-muted">
                                 perjalanan tersedia
@@ -204,7 +198,7 @@
                 {{-- Kendaraan --}}
                 <div class="col-md-4">
 
-                    <a href="#"
+                    <a href="{{ route('pt.kendaraan.index') }}"
                        class="text-decoration-none">
 
                         <div class="border rounded p-4 h-100">
