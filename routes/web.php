@@ -1,0 +1,155 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+// ==============================
+// CONTROLLER
+// ==============================
+
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\PtController;
+use App\Http\Controllers\PtRegistrationController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PtDashboardController;
+use App\Http\Controllers\KendaraanController;
+
+
+// ============================================================
+// ADMIN - DASHBOARD
+// ============================================================
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'role:admin'])
+    ->group(function () {
+
+    // Dashboard Admin
+    Route::get('/dashboard', [
+        DashboardController::class,
+        'TampilDashboardAdminFunction'
+    ])->name('dashboard');
+
+    // Daftar PT Travel
+    Route::get('/pt', [
+        PtController::class,
+        'TampilDataPtFunction'
+    ])->name('pt.index');
+
+    // Detail PT
+    Route::get('/pt/{pt}', [
+        PtController::class,
+        'TampilDetailPtFunction'
+    ])->name('pt.show');
+
+    // Setujui PT
+    Route::patch('/pt/{pt}/approve', [
+        PtController::class,
+        'SetujuiPtFunction'
+    ])->name('pt.approve');
+
+    // Tolak PT
+    Route::patch('/pt/{pt}/reject', [
+        PtController::class,
+        'TolakPtFunction'
+    ])->name('pt.reject');
+
+});
+
+// ============================================================
+// REGISTRASI PT TRAVEL
+// ============================================================
+
+Route::get('/pt/register', [
+    PtRegistrationController::class,
+    'TampilFormRegistrasiPtFunction'
+])->name('pt.register');
+
+Route::post('/pt/register', [
+    PtRegistrationController::class,
+    'SimpanRegistrasiPtFunction'
+])->name('pt.register.store');
+
+// ============================================================
+// LOGIN
+// ============================================================
+
+// Menampilkan halaman login
+Route::get('/login', [
+    LoginController::class,
+    'TampilFormLoginFunction'
+])->name('login');
+
+// Memproses login
+Route::post('/login', [
+    LoginController::class,
+    'ProsesLoginFunction'
+])->name('login.process');
+
+// Logout
+Route::post('/logout', [
+    LoginController::class,
+    'LogoutFunction'
+])->name('logout');
+
+
+// ============================================================
+// PT TRAVEL - DASHBOARD
+// ============================================================
+
+Route::prefix('pt')
+    ->name('pt.')
+    ->middleware(['auth', 'pt'])
+    ->group(function () {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Dashboard PT
+        |--------------------------------------------------------------------------
+        */
+        Route::get('/dashboard', [
+            PtDashboardController::class,
+            'TampilDashboardPtFunction'
+        ])->name('dashboard');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Kendaraan PT
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/kendaraan', [
+            KendaraanController::class,
+            'TampilDataKendaraanFunction'
+        ])->name('kendaraan.index');
+
+        Route::get('/kendaraan/tambah', [
+            KendaraanController::class,
+            'TampilFormTambahKendaraanFunction'
+        ])->name('kendaraan.create');
+
+        Route::post('/kendaraan', [
+            KendaraanController::class,
+            'SimpanKendaraanFunction'
+        ])->name('kendaraan.store');
+
+        Route::get('/kendaraan/{kendaraan}/edit', [
+            KendaraanController::class,
+            'TampilFormEditKendaraanFunction'
+        ])->name('kendaraan.edit');
+
+        Route::put('/kendaraan/{kendaraan}', [
+            KendaraanController::class,
+            'UpdateKendaraanFunction'
+        ])->name('kendaraan.update');
+
+        Route::delete('/kendaraan/{kendaraan}', [
+            KendaraanController::class,
+            'HapusKendaraanFunction'
+        ])->name('kendaraan.destroy');
+
+    });
