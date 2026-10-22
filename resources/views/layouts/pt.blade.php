@@ -253,7 +253,7 @@
                         {{-- Driver --}}
                         <li class="nav-item">
 
-                            <a href="#"
+                            <a href="{{ route('pt.driver.index') }}"
                                 class="nav-link travelin-menu-link">
 
                                 <i class="nav-icon bi bi-person-badge"></i>

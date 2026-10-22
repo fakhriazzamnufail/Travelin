@@ -13,7 +13,7 @@ use App\Http\Controllers\PtRegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PtDashboardController;
 use App\Http\Controllers\KendaraanController;
-
+use App\Http\Controllers\DriverController;
 
 // ============================================================
 // ADMIN - DASHBOARD
@@ -152,4 +152,44 @@ Route::prefix('pt')
             'HapusKendaraanFunction'
         ])->name('kendaraan.destroy');
 
-    });
+    
+
+        /*
+        |--------------------------------------------------------------------------
+        | Driver PT
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/driver', [
+            DriverController::class,
+            'TampilDataDriverFunction'
+        ])->name('driver.index');
+
+        Route::get('/driver/tambah', [
+            DriverController::class,
+            'TampilFormTambahDriverFunction'
+        ])->name('driver.create');
+
+        Route::post('/driver', [
+            DriverController::class,
+            'SimpanDriverFunction'
+        ])->name('driver.store');
+
+        Route::get('/driver/{driver}/edit', [
+            DriverController::class,
+            'TampilFormEditDriverFunction'
+        ])->name('driver.edit');
+
+        Route::put('/driver/{driver}', [
+            DriverController::class,
+            'UpdateDriverFunction'
+        ])->name('driver.update');
+
+        Route::delete('/driver/{driver}', [
+            DriverController::class,
+            'HapusDriverFunction'
+        ])->name('driver.destroy');
+
+
+
+        });

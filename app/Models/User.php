@@ -54,4 +54,18 @@ class User extends Authenticatable
             'id'
         );
     }
+
+    /**
+     * Relasi User dengan data driver.
+     *
+     * Satu akun user memiliki satu data driver.
+     */
+    public function driver()
+    {
+        return $this->hasOne(
+            TbDriver::class,
+            'id_user',
+            'id'
+        );
+    }
 }
