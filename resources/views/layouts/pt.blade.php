@@ -24,9 +24,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link"
-                            data-lte-toggle="sidebar"
-                            href="#">
+                        <a class="nav-link" data-lte-toggle="sidebar" href="#">
 
                             <i class="bi bi-list"></i>
 
@@ -43,9 +41,7 @@
                     {{-- Notifications --}}
                     <li class="nav-item dropdown me-2">
 
-                        <a class="nav-link position-relative"
-                            href="#"
-                            data-bs-toggle="dropdown">
+                        <a class="nav-link position-relative" href="#" data-bs-toggle="dropdown">
 
                             <i class="bi bi-bell fs-5"></i>
 
@@ -76,8 +72,7 @@
                     {{-- Profile --}}
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2"
-                            href="#"
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#"
                             data-bs-toggle="dropdown">
 
                             {{-- Avatar PT --}}
@@ -122,8 +117,7 @@
 
                                     @csrf
 
-                                    <button type="submit"
-                                        class="dropdown-item text-danger">
+                                    <button type="submit" class="dropdown-item text-danger">
 
                                         <i class="bi bi-box-arrow-right me-2"></i>
 
@@ -154,8 +148,7 @@
             {{-- ================= BRAND ================= --}}
             <div class="sidebar-brand travelin-brand">
 
-                <a href="{{ route('pt.dashboard') }}"
-                    class="brand-link text-decoration-none">
+                <a href="{{ route('pt.dashboard') }}" class="brand-link text-decoration-none">
 
 
                     {{-- Logo --}}
@@ -184,8 +177,7 @@
 
                 <nav class="travelin-nav">
 
-                    <ul class="nav sidebar-menu flex-column"
-                        role="menu">
+                    <ul class="nav sidebar-menu flex-column" role="menu">
 
 
                         {{-- ================= DASHBOARD ================= --}}
@@ -219,8 +211,7 @@
                         {{-- Profil PT --}}
                         <li class="nav-item">
 
-                            <a href="#"
-                                class="nav-link travelin-menu-link">
+                            <a href="#" class="nav-link travelin-menu-link">
 
                                 <i class="nav-icon bi bi-building"></i>
 
@@ -237,9 +228,8 @@
                         <li class="nav-item">
 
                             <a href="{{ route('pt.kendaraan.index') }}"
-                                class="nav-link travelin-menu-link">
-
-                                <i class="nav-icon bi bi-car-front-fill"></i>
+                                class="nav-link travelin-menu-link {{ request()->routeIs('pt.kendaraan.*') ? 'active' : '' }}" ">
+                                <i class=" nav-icon bi bi-car-front-fill"></i>
 
                                 <p>
                                     Kendaraan
@@ -254,8 +244,7 @@
                         <li class="nav-item">
 
                             <a href="{{ route('pt.driver.index') }}"
-                                class="nav-link travelin-menu-link">
-
+                                class="nav-link travelin-menu-link {{ request()->routeIs('pt.driver.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-person-badge"></i>
 
                                 <p>
@@ -278,16 +267,15 @@
                         </li>
 
 
-                        {{-- Perjalanan --}}
+                        {{-- Rute --}}
                         <li class="nav-item">
 
-                            <a href="#"
-                                class="nav-link travelin-menu-link">
-
+                            <a href="{{ route('pt.rute.index') }}"
+                                class="nav-link travelin-menu-link {{ request()->routeIs('pt.rute.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-signpost-2"></i>
 
                                 <p>
-                                    Perjalanan
+                                    Rute
                                 </p>
 
                             </a>
@@ -298,8 +286,7 @@
                         {{-- Booking --}}
                         <li class="nav-item">
 
-                            <a href="#"
-                                class="nav-link travelin-menu-link">
+                            <a href="" class="nav-link travelin-menu-link">
 
                                 <i class="nav-icon bi bi-ticket-perforated"></i>
 
@@ -326,8 +313,7 @@
                         {{-- Profil Saya --}}
                         <li class="nav-item">
 
-                            <a href="#"
-                                class="nav-link travelin-menu-link">
+                            <a href="#" class="nav-link travelin-menu-link">
 
                                 <i class="nav-icon bi bi-person-circle"></i>
 
@@ -343,8 +329,7 @@
                         {{-- Logout --}}
                         <li class="nav-item">
 
-                            <form action="{{ route('logout') }}"
-                                method="POST">
+                            <form action="{{ route('logout') }}" method="POST">
 
                                 @csrf
 

@@ -14,6 +14,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PtDashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\RuteController;
 
 // ============================================================
 // ADMIN - DASHBOARD
@@ -189,6 +190,43 @@ Route::prefix('pt')
             DriverController::class,
             'HapusDriverFunction'
         ])->name('driver.destroy');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Rute PT
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/rute', [
+            RuteController::class,
+            'TampilDataRuteFunction'
+        ])->name('rute.index');
+
+        Route::get('/rute/tambah', [
+            RuteController::class,
+            'TampilFormTambahRuteFunction'
+        ])->name('rute.create');
+
+        Route::post('/rute', [
+            RuteController::class,
+            'SimpanRuteFunction'
+        ])->name('rute.store');
+
+        Route::get('/rute/{rute}/edit', [
+            RuteController::class,
+            'TampilFormEditRuteFunction'
+        ])->name('rute.edit');
+
+        Route::put('/rute/{rute}', [
+            RuteController::class,
+            'UpdateRuteFunction'
+        ])->name('rute.update');
+
+        Route::delete('/rute/{rute}', [
+            RuteController::class,
+            'HapusRuteFunction'
+        ])->name('rute.destroy');
 
 
 
