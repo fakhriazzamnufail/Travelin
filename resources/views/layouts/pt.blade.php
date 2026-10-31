@@ -228,7 +228,7 @@
                         <li class="nav-item">
 
                             <a href="{{ route('pt.kendaraan.index') }}"
-                                class="nav-link travelin-menu-link {{ request()->routeIs('pt.kendaraan.*') ? 'active' : '' }}" ">
+                                class="nav-link travelin-menu-link {{ request()->routeIs('pt.kendaraan.*') ? 'active' : '' }}">
                                 <i class=" nav-icon bi bi-car-front-fill"></i>
 
                                 <p>
@@ -281,6 +281,24 @@
                             </a>
 
                         </li>
+
+
+                        {{-- Jadwal --}}
+                        <li class="nav-item">
+
+                            <a href="{{ route('pt.jadwal.index') }}"
+                                class="nav-link travelin-menu-link {{ request()->routeIs('pt.jadwal.*') ? 'active' : '' }}">
+
+                                <i class="nav-icon bi bi-calendar2-check"></i>
+
+                                <p>
+                                    Jadwal
+                                </p>
+
+                            </a>
+
+                        </li>
+
 
 
                         {{-- Booking --}}

@@ -31,4 +31,13 @@ class TbKendaraan extends Model
     {
         return $this->belongsTo(TbPt::class, 'id_pt', 'id_pt');
     }
+
+    public function jadwal()
+    {
+        return $this->hasMany(
+            TbJadwal::class,
+            'id_kendaraan',
+            'id_kendaraan'
+        );
+    }
 }

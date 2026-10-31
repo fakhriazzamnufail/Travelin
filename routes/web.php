@@ -15,6 +15,7 @@ use App\Http\Controllers\PtDashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\RuteController;
+use App\Http\Controllers\JadwalController;
 
 // ============================================================
 // ADMIN - DASHBOARD
@@ -227,6 +228,44 @@ Route::prefix('pt')
             RuteController::class,
             'HapusRuteFunction'
         ])->name('rute.destroy');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Jadwal PT
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/jadwal', [
+            JadwalController::class,
+            'TampilDataJadwalFunction'
+        ])->name('jadwal.index');
+
+        Route::get('/jadwal/tambah', [
+            JadwalController::class,
+            'TampilFormTambahJadwalFunction'
+        ])->name('jadwal.create');
+
+        Route::post('/jadwal', [
+            JadwalController::class,
+            'SimpanJadwalFunction'
+        ])->name('jadwal.store');
+
+        Route::get('/jadwal/{jadwal}/edit', [
+            JadwalController::class,
+            'TampilFormEditJadwalFunction'
+        ])->name('jadwal.edit');
+
+        Route::put('/jadwal/{jadwal}', [
+            JadwalController::class,
+            'UpdateJadwalFunction'
+        ])->name('jadwal.update');
+
+        Route::delete('/jadwal/{jadwal}', [
+            JadwalController::class,
+            'HapusJadwalFunction'
+        ])->name('jadwal.destroy');
+
 
 
 
